@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team — Chaitanya Law Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #1a1611; --gold: #b8973a; --gold-light: #d4b05a;
+  --cream: #f9f7f2; --warm-gray: #8a8278; --border: #e2ddd5; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(249,247,242,0.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 64px;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.nav-cta { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--gold-light); }
+
+.page-header { padding: 120px 8vw 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+.page-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; }
+.page-title em { font-style: italic; color: var(--gold); }
+.page-subtitle { font-size: 0.87rem; color: var(--warm-gray); margin-top: 1rem; max-width: 500px; }
+
+/* LEAD ADVOCATE */
+.lead-section {
+  background: var(--ink); padding: 5rem 8vw;
+  display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: start;
+}
+.advocate-monogram {
+  width: 140px; height: 140px; background: none;
+  border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold);
+  flex-shrink: 0;
+}
+.advocate-meta { color: var(--white); }
+.advocate-name { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; line-height: 1.2; margin-bottom: 0.4rem; }
+.advocate-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.advocate-bio { font-size: 0.87rem; color: rgba(255,255,255,0.65); line-height: 1.9; max-width: 680px; margin-bottom: 2rem; }
+.advocate-bio strong { color: var(--white); font-weight: 500; }
+.expertise-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(184,151,58,0.4); padding: 0.3rem 0.8rem;
+}
+
+/* TEAM GRID */
+.team-section { padding: 5rem 8vw; background: var(--cream); }
+.section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 3rem; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.team-card { background: var(--white); padding: 2.5rem 2rem; transition: background 0.2s; }
+.team-card:hover { background: var(--cream); }
+.team-initials {
+  width: 64px; height: 64px; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; margin-bottom: 0.3rem; }
+.team-role { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.team-desc { font-size: 0.78rem; color: var(--warm-gray); line-height: 1.8; }
+
+/* JOIN */
+.join-section { background: var(--gold); padding: 4rem 8vw; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.join-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--white); }
+.join-section p { font-size: 0.82rem; color: rgba(255,255,255,0.8); margin-top: 0.4rem; }
+.btn-white { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--white); padding: 0.85rem 2rem; text-decoration: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+.btn-white:hover { background: var(--cream); }
+
+footer { padding: 4rem 8vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; border-top: 1px solid var(--border); background: var(--cream); }
+.footer-col-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.footer-col p, .footer-col a { font-size: 0.82rem; color: var(--warm-gray); line-height: 1.9; text-decoration: none; display: block; }
+.footer-col a:hover { color: var(--ink); }
+.footer-social { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.footer-social a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); border: 1px solid var(--border); padding: 0.3rem 0.7rem; text-decoration: none; transition: all 0.2s; }
+.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 1.5rem; font-size: 0.72rem; color: var(--warm-gray); text-align: center; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .lead-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 6vw; }
+  .team-section { padding: 3rem 6vw; }
+  .team-grid { grid-template-columns: 1fr; }
+  .join-section { flex-direction: column; text-align: center; padding: 3rem 6vw; }
+  footer { grid-template-columns: 1fr; padding: 3rem 6vw; }
+  .page-header { padding: 100px 6vw 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>C</span>haitanya Law Chamber</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html" class="active">Our Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="appointment.html">Book Appointment</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-eyebrow">The People Behind the Practice</p>
+  <h1 class="page-title">Our <em>Team</em></h1>
+  <p class="page-subtitle">Experienced advocates committed to delivering the best outcome for every client.</p>
+</div>
+
+<section class="lead-section">
+  <div class="advocate-monogram">UH</div>
+  <div class="advocate-meta">
+    <h2 class="advocate-name">Adv. Uday P. Honguntikar</h2>
+    <p class="advocate-title">Founder & Principal Advocate · High Court, Kalaburagi Bench</p>
+    <p class="advocate-bio">
+      <strong>Adv. Uday P. Honguntikar</strong> is the founder and principal advocate of Chaitanya Law Chamber. With over 15 years of practice before the Karnataka High Court and subordinate courts in the Kalaburagi jurisdiction, he brings deep expertise in civil, criminal, family, and corporate law.
+    </p>
+    <p class="advocate-bio">
+      Known for his meticulous preparation, client-centered approach, and assertive advocacy, Adv. Honguntikar has successfully represented clients in hundreds of matters ranging from complex property disputes to high-stakes criminal defence. He is also a public voice on legal awareness, maintaining active outreach through social media and community engagement.
+    </p>
+    <div class="expertise-tags">
+      <span class="tag">Civil Law</span>
+      <span class="tag">Criminal Defence</span>
+      <span class="tag">Family Law</span>
+      <span class="tag">Corporate Law</span>
+      <span class="tag">High Court Advocacy</span>
+      <span class="tag">Legal Awareness</span>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <p class="section-label">Supporting Counsel</p>
+  <h2 class="section-title">The rest of our team</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-initials">A</div>
+      <div class="team-name">Associate Advocate</div>
+      <div class="team-role">Civil & Property Matters</div>
+      <div class="team-desc">Handles civil suits, property disputes, injunctions, and execution proceedings across district and subordinate courts.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">A</div>
+      <div class="team-name">Associate Advocate</div>
+      <div class="team-role">Family & Matrimonial Law</div>
+      <div class="team-desc">Specialises in divorce proceedings, child custody, maintenance applications, and succession matters.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">C</div>
+      <div class="team-name">Chamber Clerk</div>
+      <div class="team-role">Court & Client Coordination</div>
+      <div class="team-desc">Manages filings, court dates, client appointments, and day-to-day chamber operations to ensure smooth service delivery.</div>
+    </div>
+  </div>
+</section>
+
+<section class="join-section">
+  <div>
+    <h2>Interested in joining the chamber?</h2>
+    <p>We occasionally take on junior advocates and interns. Reach out to us directly.</p>
+  </div>
+  <a class="btn-white" href="contact.html">Get in Touch</a>
+</section>
+
+<footer>
+  <div class="footer-col">
+    <p class="footer-col-label">Contact</p>
+    <a href="mailto:chaitanyalawchamber@gmail.com">chaitanyalawchamber@gmail.com</a>
+    <a href="https://wa.me/919036217181">+91 90362 17181 (WhatsApp)</a>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Address</p>
+    <p>Plot No.32, H.No.1-892/72/32<br>Opp. P&T Water Tank, Old Jewargi Road<br>Ganesh Nagar, Kalaburagi – 585102</p>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Follow Us</p>
+    <div class="footer-social">
+      <a href="https://www.youtube.com/@Lbvoices9" target="_blank">YouTube</a>
+      <a href="https://x.com/lbvoices9" target="_blank">X</a>
+      <a href="https://instagram.com/lbvoices" target="_blank">Instagram</a>
+      <a href="https://facebook.com/profile.php?id=61573095419896" target="_blank">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Chaitanya Law Chamber — All rights reserved</div>
+</footer>
+
+</body>
+</html>

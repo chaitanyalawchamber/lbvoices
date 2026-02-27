@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Chaitanya Law Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #1a1611; --gold: #b8973a; --gold-light: #d4b05a;
+  --cream: #f9f7f2; --warm-gray: #8a8278; --border: #e2ddd5; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(249,247,242,0.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 64px;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.nav-cta { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--gold-light); }
+
+.page-header { padding: 120px 8vw 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+.page-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; }
+.page-title em { font-style: italic; color: var(--gold); }
+.page-subtitle { font-size: 0.87rem; color: var(--warm-gray); margin-top: 1rem; max-width: 500px; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 0;
+  min-height: 500px;
+}
+.contact-info { background: var(--ink); padding: 5rem 5vw; }
+.info-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.info-block { margin-bottom: 2.5rem; }
+.info-block-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+.info-block-value { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--white); line-height: 1.6; }
+.info-block-value a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+.info-block-value a:hover { color: var(--gold); }
+.social-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2.5rem; }
+.social-row a { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.9rem; text-decoration: none; transition: all 0.2s; }
+.social-row a:hover { border-color: var(--gold); color: var(--gold); }
+
+.contact-form-wrap { background: var(--white); padding: 5rem 5vw; }
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem; }
+.form-subtitle { font-size: 0.82rem; color: var(--warm-gray); margin-bottom: 2.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+.form-group label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 0.4rem; }
+.form-group input, .form-group select, .form-group textarea {
+  font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+  background: var(--cream); border: 1px solid var(--border);
+  padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s;
+  color: var(--ink);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select { appearance: none; cursor: pointer; }
+.submit-btn {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--white); background: var(--ink); border: none;
+  padding: 0.95rem 2.5rem; cursor: pointer; transition: background 0.2s; width: 100%; margin-top: 0.5rem;
+}
+.submit-btn:hover { background: var(--gold); }
+.form-note { font-size: 0.72rem; color: var(--warm-gray); margin-top: 1rem; text-align: center; }
+
+.map-section {
+  background: var(--cream); padding: 4rem 8vw; border-top: 1px solid var(--border);
+}
+.map-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.map-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; margin-bottom: 1.5rem; }
+.map-embed { width: 100%; height: 320px; border: 1px solid var(--border); display: block; }
+
+footer { padding: 4rem 8vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; border-top: 1px solid var(--border); background: var(--cream); }
+.footer-col-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.footer-col p, .footer-col a { font-size: 0.82rem; color: var(--warm-gray); line-height: 1.9; text-decoration: none; display: block; }
+.footer-col a:hover { color: var(--ink); }
+.footer-social { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.footer-social a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); border: 1px solid var(--border); padding: 0.3rem 0.7rem; text-decoration: none; transition: all 0.2s; }
+.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 1.5rem; font-size: 0.72rem; color: var(--warm-gray); text-align: center; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info, .contact-form-wrap { padding: 3rem 6vw; }
+  .form-row { grid-template-columns: 1fr; }
+  .map-section { padding: 3rem 6vw; }
+  footer { grid-template-columns: 1fr; padding: 3rem 6vw; }
+  .page-header { padding: 100px 6vw 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>C</span>haitanya Law Chamber</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Our Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="appointment.html">Book Appointment</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-eyebrow">Get in Touch</p>
+  <h1 class="page-title">Contact <em>Us</em></h1>
+  <p class="page-subtitle">We're here to help. Reach out by phone, email, or fill in the form and we'll respond promptly.</p>
+</div>
+
+<div class="contact-grid">
+  <div class="contact-info">
+    <p class="info-label">Our Details</p>
+
+    <div class="info-block">
+      <div class="info-block-label">Email</div>
+      <div class="info-block-value">
+        <a href="mailto:chaitanyalawchamber@gmail.com">chaitanyalawchamber@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-label">WhatsApp / Phone</div>
+      <div class="info-block-value">
+        <a href="https://wa.me/919036217181">+91 90362 17181</a>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-label">Address</div>
+      <div class="info-block-value">
+        Plot No.32, H.No.1-892/72/32<br>
+        Opp. P&T Water Tank<br>
+        Old Jewargi Road, Ganesh Nagar<br>
+        Kalaburagi – 585102
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-label">Court</div>
+      <div class="info-block-value">
+        Karnataka High Court<br>Kalaburagi Bench
+      </div>
+    </div>
+
+    <div class="social-row">
+      <a href="https://www.youtube.com/@Lbvoices9" target="_blank">YouTube</a>
+      <a href="https://x.com/lbvoices9" target="_blank">X</a>
+      <a href="https://instagram.com/lbvoices" target="_blank">Instagram</a>
+      <a href="https://facebook.com/profile.php?id=61573095419896" target="_blank">Facebook</a>
+      <a href="https://wa.me/919036217181" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="contact-form-wrap">
+    <h2 class="form-title">Send us a message</h2>
+    <p class="form-subtitle">We'll get back to you within one business day.</p>
+    <form action="mailto:chaitanyalawchamber@gmail.com" method="POST" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="matter">Type of Matter</label>
+        <select id="matter" name="matter">
+          <option value="">Select a practice area</option>
+          <option>Civil Law</option>
+          <option>Criminal Law</option>
+          <option>Family Law</option>
+          <option>Corporate Law</option>
+          <option>Other / Not sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Brief Description</label>
+        <textarea id="message" name="message" placeholder="Please briefly describe your legal matter..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+      <p class="form-note">Your information is treated with strict confidentiality.</p>
+    </form>
+  </div>
+</div>
+
+<section class="map-section">
+  <p class="map-label">Find Us</p>
+  <h2 class="map-title">Ganesh Nagar, Kalaburagi</h2>
+  <iframe
+    class="map-embed"
+    src="https://www.google.com/maps?q=Ganesh+Nagar+Kalaburagi+Karnataka&output=embed"
+    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+<footer>
+  <div class="footer-col">
+    <p class="footer-col-label">Contact</p>
+    <a href="mailto:chaitanyalawchamber@gmail.com">chaitanyalawchamber@gmail.com</a>
+    <a href="https://wa.me/919036217181">+91 90362 17181 (WhatsApp)</a>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Address</p>
+    <p>Plot No.32, H.No.1-892/72/32<br>Opp. P&T Water Tank, Old Jewargi Road<br>Ganesh Nagar, Kalaburagi – 585102</p>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Follow Us</p>
+    <div class="footer-social">
+      <a href="https://www.youtube.com/@Lbvoices9" target="_blank">YouTube</a>
+      <a href="https://x.com/lbvoices9" target="_blank">X</a>
+      <a href="https://instagram.com/lbvoices" target="_blank">Instagram</a>
+      <a href="https://facebook.com/profile.php?id=61573095419896" target="_blank">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Chaitanya Law Chamber — All rights reserved</div>
+</footer>
+
+</body>
+</html>
