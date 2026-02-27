@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaitanya Law Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1611;
+    --gold: #b8973a;
+    --gold-light: #d4b05a;
+    --cream: #f9f7f2;
+    --warm-gray: #8a8278;
+    --border: #e2ddd5;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249,247,242,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--warm-gray);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--white);
+    background: var(--gold); border: none;
+    padding: 0.55rem 1.4rem; cursor: pointer;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vw 6vw 8vw 8vw;
+    position: relative;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border) 30%, var(--border) 70%, transparent);
+  }
+  .hero-eyebrow {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 0.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-style: italic; color: var(--warm-gray);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--warm-gray); line-height: 1.6;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--gold);
+    margin-bottom: 2.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-desc {
+    font-size: 0.85rem; color: var(--warm-gray); line-height: 1.8;
+    max-width: 400px; margin-bottom: 2.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--white);
+    background: var(--ink); border: none;
+    padding: 0.85rem 2rem; cursor: pointer;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-ghost {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+    background: transparent; border: 1px solid var(--border);
+    padding: 0.85rem 2rem; cursor: pointer;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .hero-right {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vw 8vw 8vw 6vw;
+    background: var(--white);
+    opacity: 0; animation: fadeIn 1s 0.5s forwards;
+  }
+  .practice-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .practice-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  .practice-item {
+    background: var(--white);
+    padding: 1.6rem 1.4rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .practice-item:hover { background: var(--cream); }
+  .practice-icon {
+    font-size: 1.4rem; margin-bottom: 0.6rem;
+  }
+  .practice-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .practice-desc {
+    font-size: 0.75rem; color: var(--warm-gray); line-height: 1.6;
+  }
+
+  .stat-row { display: flex; gap: 2rem; }
+  .stat { flex: 1; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem; color: var(--warm-gray);
+    letter-spacing: 0.05em; margin-top: 0.2rem;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--ink); color: var(--white);
+    padding: 5rem 8vw;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 4rem;
+    align-items: center;
+  }
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; line-height: 1.2;
+  }
+  .about-heading em { color: var(--gold); font-style: italic; }
+  .about-text {
+    font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.9;
+  }
+  .about-text strong { color: var(--white); font-weight: 500; }
+
+  /* ── CONTACT FOOTER ── */
+  footer {
+    padding: 4rem 8vw;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+    border-top: 1px solid var(--border);
+    background: var(--cream);
+  }
+  .footer-col-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .footer-col p, .footer-col a {
+    font-size: 0.82rem; color: var(--warm-gray); line-height: 1.9;
+    text-decoration: none; display: block;
+  }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-social { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .footer-social a {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--warm-gray);
+    border: 1px solid var(--border); padding: 0.3rem 0.7rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border); padding-top: 1.5rem;
+    font-size: 0.72rem; color: var(--warm-gray); text-align: center;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 6vw 3rem; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 3rem 6vw 5rem; background: var(--cream); }
+    .about-strip { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 6vw; }
+    footer { grid-template-columns: 1fr; padding: 3rem 6vw; }
+    .practice-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/lbvoices/index.html"><span>C</span>haitanya Law Chamber</a>
+  <ul class="nav-links">
+    <li><a href="/lbvoices/index.html">Home</a></li>
+    <li><a href="/lbvoices/about.html">About</a></li>
+    <li><a href="/lbvoices/team.html">Our Team</a></li>
+    <li><a href="/lbvoices/services.html">Services</a></li>
+    <li><a href="/lbvoices/contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="/lbvoices/appointment.html">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">High Court Advocate · Kalaburagi Bench</p>
+    <h1 class="hero-title">Adv. Uday P.<br>Honguntikar</h1>
+    <p class="hero-subtitle">Chaitanya Law Chamber</p>
+    <blockquote class="hero-quote">
+      "Justice is not a privilege —<br>it's a right we stand to protect."
+    </blockquote>
+    <p class="hero-desc">
+      Expert legal representation in civil, criminal, family, and corporate matters — with integrity, experience, and a commitment to results.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="/lbvoices/appointment.html">Book an Appointment</a>
+      <a class="btn-ghost" href="/lbvoices/services.html">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="practice-label">Practice Areas</p>
+    <div class="practice-grid">
+      <div class="practice-item">
+        <div class="practice-icon">⚖️</div>
+        <div class="practice-name">Civil Law</div>
+        <div class="practice-desc">Property disputes, contracts, injunctions &amp; suits</div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🏛️</div>
+        <div class="practice-name">Criminal Law</div>
+        <div class="practice-desc">Defence, bail, anticipatory bail &amp; appeals</div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">👨‍👩‍👧</div>
+        <div class="practice-name">Family Law</div>
+        <div class="practice-desc">Divorce, custody, maintenance &amp; succession</div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🏢</div>
+        <div class="practice-name">Corporate Law</div>
+        <div class="practice-desc">Business advisory, compliance &amp; agreements</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years of Practice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Cases Handled</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Practice Areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-heading">
+    About the<br><em>Chamber</em>
+  </div>
+  <p class="about-text">
+    <strong>Chaitanya Law Chamber</strong> is a full-service legal practice based at the Kalaburagi Bench of the Karnataka High Court. We deliver practical legal solutions rooted in thorough research, clear communication, and dedicated client engagement. Our approach is both personal and strategic — we listen carefully, advise honestly, and represent forcefully. Every client deserves counsel that is informed, accessible, and wholly committed to their cause.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-col">
+    <p class="footer-col-label">Contact</p>
+    <a href="/cdn-cgi/l/email-protection#6b08030a021f0a05120a070a1c08030a06090e192b0c060a020745080406"><span class="__cf_email__" data-cfemail="3e5d565f574a5f50475f525f495d565f535c5b4c7e59535f5752105d5153">[email&#160;protected]</span></a>
+    <a href="https://wa.me/919036217181">+91 90362 17181 (WhatsApp)</a>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Address</p>
+    <p>Plot No.32, H.No.1-892/72/32<br>Opp. P&amp;T Water Tank, Old Jewargi Road<br>Ganesh Nagar, Kalaburagi – 585102</p>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-label">Follow Us</p>
+    <div class="footer-social">
+      <a href="https://www.youtube.com/@Lbvoices9" target="_blank">YouTube</a>
+      <a href="https://x.com/lbvoices9" target="_blank">X</a>
+      <a href="https://instagram.com/lbvoices" target="_blank">Instagram</a>
+      <a href="https://facebook.com/profile.php?id=61573095419896" target="_blank">Fa
